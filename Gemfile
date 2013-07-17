@@ -3,6 +3,11 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
+# Postgres database gem
+gem 'pg'
+
+gem 'sorcery'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
@@ -31,9 +36,6 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
-
-# Postgres database gem
-gem 'pg'
 
 group :tools do
 	gem 'guard-test'
