@@ -5,4 +5,9 @@ Crowdfunder::Application.routes.draw do
 
   root :to => 'projects#index'
 
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+
+  get 'logout' => 'sessions#destroy'
+
 end
