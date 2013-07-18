@@ -1,7 +1,5 @@
 <h3>Listing projects</h3>
 
-<%= render 'nav' %>
-
 <% @projects.each do |project| %>
 	<%= link_to project.title, project %>
 <% end %>
