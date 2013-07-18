@@ -48,7 +48,8 @@ end
 
 group :test do
 	gem 'factory_girl_rails'
-	gem 'capybara'
+	gem 'capybara-webkit', '~> 1.0.0'
+	gem 'database_cleaner'
 end
 
 group :assets do

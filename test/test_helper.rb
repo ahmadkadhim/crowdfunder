@@ -4,23 +4,31 @@ require 'rails/test_help'
 
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
+end
+
+DatabaseCleaner.strategy = :truncation
 
 class ActionDispatch::IntegrationTest
 	include Capybara::DSL
 	Capybara.app = Crowdfunder::Application
+	Capybara.javascript_driver = :webkit
+
+	self.use_transactional_fixtures = false
 
 	teardown do
+		DatabaseCleaner.clean
 		Capybara.reset_sessions!
 		Capybara.use_default_driver
 	end
 end
 
+def setup_signed_in_user
+	pass = "this-is-a-password"
+	user = FactoryGirl.create :user, password: pass
+	visit '/session/new'
 
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  #
-  # Note: You'll currently still have to declare fixtures explicitly in integration tests
-  # -- they do not yet inherit this setting
-	# fixtures :all
-
-  # Add more helper methods to be used by all tests here...
+	fill_in "email", with: user.email
+	fill_in "password", with: pass
+	click_button "Login"
+	end
 end
