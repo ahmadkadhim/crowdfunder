@@ -4,10 +4,10 @@
       <a class="brand" href="#">CrowdFunder</a>
       <div class="nav-collapse collapse">
         <ul class="nav">
-          <li class="<%= 'active' if current_page? root_path %>">
+          <li<%= ' class=active' if current_page? root_path %>>
             <%= link_to 'Home', :root %>
           </li>
-          <li class="<%= 'active' if current_page? projects_path %>">
+          <li<%= ' class=active' if (current_page? projects_path) || (current_page? project_path(params[:id])) %>>
             <%= link_to 'Projects', :projects %>
           </li>
         </ul>
