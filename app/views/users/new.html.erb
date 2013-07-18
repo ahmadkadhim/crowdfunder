@@ -1,7 +1,7 @@
 <h1>New User</h1>
 
 <%= form_for @user do |f| %>
-	<% if @user.errors.any? %>
+<!-- 	<% if @user.errors.any? %>
 		<div class="error_messages">
 			<h2>Form is invalid</h2>
 			<ul>
@@ -10,6 +10,9 @@
 				<% end %>
 			</ul>
 		</div>
+	<% end %> -->
+	<% if flash[:alert] %>
+		<p class="alert"><%= flash.now[:alert] %></p>
 	<% end %>
 	<div class="field">
 		<%= f.label :email %>

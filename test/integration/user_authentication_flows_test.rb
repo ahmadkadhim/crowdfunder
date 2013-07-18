@@ -32,6 +32,5 @@ class UserAuthenticationFlowsTest < ActionDispatch::IntegrationTest
   	assert page.has_no_content?("Account created")
 
     assert find('.alert:first').has_content?("Try Again")
-
   end
 end
