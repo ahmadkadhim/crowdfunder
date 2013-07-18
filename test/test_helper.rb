@@ -8,6 +8,11 @@ class ActiveSupport::TestCase
 class ActionDispatch::IntegrationTest
 	include Capybara::DSL
 	Capybara.app = Crowdfunder::Application
+
+	teardown do
+		Capybara.reset_sessions!
+		Capybara.use_default_driver
+	end
 end
 
 
