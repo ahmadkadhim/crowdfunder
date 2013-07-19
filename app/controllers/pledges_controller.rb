@@ -1,5 +1,6 @@
 class PledgesController < ApplicationController
 
+	before_filter :require_login
 	before_filter :load_project
 
 	def new
@@ -9,11 +10,11 @@ class PledgesController < ApplicationController
 
 	def create
 		@pledge = Pledge.new(
-			user_id: current_user,
+			user_id: current_user.id,
 			project_id: @project.id,
 			amount: params[:pledge][:amount])
 		if @pledge.save
-			redirect_to root_path, :notice => "Pledge submitted!"
+			redirect_to project_path(@project[:id]), :notice => "Thanks for pledging!"
 		else
 			render 'new'
 		end

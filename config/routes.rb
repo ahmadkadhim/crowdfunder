@@ -7,7 +7,7 @@ Crowdfunder::Application.routes.draw do
   end
   resources :users
 
-  get 'session/new'
+  get 'session/new' => 'session#new', as: 'new_session'
   post 'session/' => 'session#create'
   delete 'session' => 'session#destroy'
 
