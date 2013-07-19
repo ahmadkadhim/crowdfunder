@@ -1,13 +1,17 @@
 Crowdfunder::Application.routes.draw do
-  resources :projects
-  resources :users
-  resources :sessions, :only => [:new, :create, :destroy]
-
+  
   root :to => 'projects#index'
 
-  get 'login' => 'sessions#new'
-  post 'login' => 'sessions#create'
+  resources :projects
+  resources :users
 
-  get 'logout' => 'sessions#destroy'
+  get 'session/new'
+  post 'session/' => 'session#create'
+  delete 'session' => 'session#destroy'
+
+  get 'login' => 'session#new'
+  post 'login' => 'session#create'
+
+  get 'logout' => 'session#destroy'
 
 end

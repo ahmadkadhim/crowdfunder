@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class SessionController < ApplicationController
   def new
   end
 
@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
   			format.html { redirect_back_or_to(:users, :notice => "Login Successful")}
   			format.xml { render :xml => @user, :status => :created, :location => @user }
   		else
-  			format.html { flash.now[:alert] = "Login failed."; render :action => 'new' }
+  			format.html { flash.now[:alert] = "Invalid"; render :action => 'new' }
   			format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
   		end
   	end
@@ -17,9 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
   	logout
-  	redirect_to(:users, :notice => 'Logged out!')
+  	redirect_to(:users, :notice => 'Bye')
   end
-
-
 
 end
