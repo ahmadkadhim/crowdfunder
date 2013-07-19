@@ -4,6 +4,9 @@ require 'rails/test_help'
 
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
+  teardown do
+  	DatabaseCleaner.clean
+  end
 end
 
 DatabaseCleaner.strategy = :truncation
@@ -29,5 +32,6 @@ class ActionDispatch::IntegrationTest
 		fill_in "email", with: user.email
 		fill_in "password", with: pass
 		click_button "Login"
+		user
 	end
 end
