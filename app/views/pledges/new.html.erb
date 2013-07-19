@@ -1,0 +1,23 @@
+<h1>Pledge For <%= @project.title %></h1>
+
+<%= form_for [@project, @pledge] do |f| %>
+	<% if @pledge.errors.any? %>
+		<div class="error_messages">
+			<h2>Invalid pledge</h2>
+			<ul>
+				<% @pledge.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<%= f.label :amount %>
+	<%= f.text_field :amount %>
+
+	<div class="actions">
+		<%= f.submit "Pledge Now", :class => 'btn' %>
+	</div>
+
+
+<% end %>

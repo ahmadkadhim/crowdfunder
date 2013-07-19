@@ -9,4 +9,13 @@ class ProjectsController < ApplicationController
 
 	def new
 	end
+
+	private
+
+	def project_params
+		return params.require(:project).permit(:title,:description,:teaser,:user_id,:goal)
+	end
+
+	
+
 end
