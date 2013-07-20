@@ -7,6 +7,10 @@ Crowdfunder::Application.routes.draw do
   end
   resources :users
 
+  namespace :my do
+    resources :projects
+  end
+
   get 'session/new' => 'session#new', as: 'new_session'
   post 'session/' => 'session#create'
   delete 'session' => 'session#destroy'
